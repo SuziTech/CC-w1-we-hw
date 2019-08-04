@@ -68,3 +68,44 @@ def find_pet_by_name(defined_info, passed_in_name)
   #p found_pet_by_name
   return found_pet_by_name
 end
+
+def remove_pet_by_name(defined_info, passed_in_name)
+  pets_array = defined_info[:pets]
+  # p passed_in_name
+
+  pets_array.each {
+    | pet | if pet[:name] != passed_in_name
+              next
+            elsif
+              pet[:name] == passed_in_name
+              p pet
+              pets_array.delete(pet)
+            else
+              p pet + "none existent pet!"
+            end
+  }
+end
+
+def add_pet_to_stock(defined_info, pet_to_add)
+  pets_array = defined_info[:pets]
+  # p pets_array
+  pets_array = pets_array.unshift(pet_to_add)
+  # p pets_array
+end
+
+def customer_cash(defined_info)
+  customers_current_cash = defined_info[:cash]
+  return customers_current_cash
+end
+
+def remove_customer_cash(customer_ref, cash_to_deduct)
+  return customer_ref[:cash] = customer_ref[:cash] - cash_to_deduct
+end
+
+def customer_pet_count(defined_info)
+  return defined_info[:pets].count
+end
+
+def add_pet_to_customer(customer_ref, new_pet_reference)
+  customer_ref[:pets] = customer_ref[:pets].unshift(new_pet_reference)
+end
